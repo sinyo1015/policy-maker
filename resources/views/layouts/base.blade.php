@@ -20,7 +20,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>@yield('title') - Policy Maker</title>
+    <title>@yield('current_page') - Policy Maker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta name="title" content="Volt Premium Bootstrap Dashboard - Buttons">
     <meta name="author" content="Themesberg">
@@ -47,7 +47,9 @@
     <link type="text/css" href="{{asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('vendor/notyf/notyf.min.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('css/volt.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack('header')
+    @vite([])
 </head>
 
 <body>
@@ -136,11 +138,7 @@
         </div>
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="card border-light shadow-sm components-section">
-                    <div class="card-body">
-
-                    </div>
-                </div>
+                @yield('contents')
             </div>
         </div>
         <footer class="bg-white rounded shadow p-5 mb-4 mt-4">
@@ -166,6 +164,9 @@
     <script src="{{asset('vendor/simplebar/dist/simplebar.min.js')}}"></script>
     <script async defer="defer" src="https://buttons.github.io/buttons.js"></script>
     <script src="{{asset('assets/js/volt.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @stack('script')
 </body>
 
 </html>
