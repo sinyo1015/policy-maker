@@ -8,6 +8,14 @@ Proyek
 Edit Proyek
 @endsection
 
+@section("title")
+Edit Proyek
+@endsection
+
+@section("breadcrumb")
+Edit Proyek
+@endsection
+
 
 @section("contents")
 <div x-data="_alpineInit()">
@@ -110,7 +118,7 @@ Edit Proyek
 <script>
     let policyDateEl = document.querySelector("#policyDate");
     let analysisDateEl = document.querySelector("#analysisDate");
-    const labels = @json($data->labels);
+    const labels = JSON.parse(`@json($data->labels)`);
 
     const policyDate = new Datepicker(policyDateEl, {
         format : "yyyy-mm-dd"

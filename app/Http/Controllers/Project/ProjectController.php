@@ -35,6 +35,7 @@ class ProjectController extends Controller
                 ->addIndexColumn()
                 ->addColumn("edit_link", fn($item) => route("project.edit", $item->id))
                 ->addColumn("delete_link", fn($item) => route("project.delete", $item->id))
+                ->addColumn("open_project_link", fn($item) => route("project_detail.index", $item->id))
                 ->make();
         }
 

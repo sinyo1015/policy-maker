@@ -20,7 +20,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>@yield('current_page') - Policy Maker</title>
+    <title>@yield('title') - Policy Maker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta name="title" content="Volt Premium Bootstrap Dashboard - Buttons">
     <meta name="author" content="Themesberg">
@@ -48,6 +48,18 @@
     <link type="text/css" href="{{asset('vendor/notyf/notyf.min.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('css/volt.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        ._project_sidebar_links{
+            padding-left: unset !important;
+        }
+        ._project_sidebar_title {
+            white-space: normal;
+            float: left;
+            width: 100%;
+            height: auto;
+            word-wrap: break-word;
+        }
+    </style>
     @stack('header')
     @vite([])
 </head>
@@ -63,7 +75,14 @@
             </button>
         </div>
     </nav>
-    @include('navs.sidebar')
+    @switch(request()->segment(1))
+        @case("project")
+            @include("navs.sidebar_project")
+            @break
+        @default
+            @include("navs.sidebar")
+            @break
+    @endswitch
     <main class="content">
         <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
             <div class="container-fluid px-0">
@@ -126,7 +145,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg></a></li>
                     <li class="breadcrumb-item"><a href="#">@yield('menu')</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">@yield('current_page')</li>
+                    <li class="breadcrumb-item active" aria-current="page">@yield('breadcrumb')</li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">

@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\Agendas\AgendaRepositoryInterface;
+use App\Repositories\Agendas\AgendaRepository;
+use App\Repositories\Policies\{
+    PolicyRepository,
+    PolicyRepositoryInterface
+};
 use App\Repositories\ProjectImplementationLabels\{
     ProjectImplementationLabelsInterface,
     ProjectImplementationLabelsRepository
@@ -23,6 +29,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(ProjectRepositoryInterface::class, ProjectRepository::class);
         $this->app->bind(ProjectImplementationLabelsInterface::class, ProjectImplementationLabelsRepository::class);
+        $this->app->bind(PolicyRepositoryInterface::class, PolicyRepository::class);
+        $this->app->bind(AgendaRepositoryInterface::class, AgendaRepository::class);
     }
 
     /**

@@ -8,6 +8,13 @@ Proyek
 Buat Proyek
 @endsection
 
+@section("breadcrumb")
+Buat Proyek
+@endsection
+
+@section("title")
+Buat Proyek
+@endsection
 
 @section("contents")
 <div x-data="_alpineInit()">

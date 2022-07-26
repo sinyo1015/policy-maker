@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('project_impl_period_labels', function (Blueprint $table) {
+        Schema::create('position_scales', function (Blueprint $table) {
             $table->id();
-            $table->string("label")->nullable();
+            $table->string("name");
+            $table->integer("non_mobilized_position_intensity")->default(0);
             $table->unsignedBigInteger("project_id");
             $table->timestamps();
+
             $table->foreign("project_id")->references("id")->on("projects")->onDelete("cascade");
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_impl_period_labels');
+        Schema::dropIfExists('position_scales');
     }
 };

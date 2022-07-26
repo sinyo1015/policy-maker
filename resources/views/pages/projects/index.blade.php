@@ -8,6 +8,14 @@ Proyek
 Daftar Proyek
 @endsection
 
+@section("title")
+Daftar Proyek
+@endsection
+
+@section("breadcrumb")
+Daftar Proyek
+@endsection
+
 
 @section("contents")
 <div class="pb-4">
@@ -97,8 +105,9 @@ Daftar Proyek
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuReference" style="">
-                                    <li><a class="dropdown-item rounded-top deleteProject" href="#" data-delete="${row?.delete_link}" ><i class="fa fa-trash"></i> Hapus</a></li>
+                                    <li><a class="dropdown-item rounded-top" href="${row?.open_project_link}"><i class="fa fa-folder"></i> Buka Proyek</a></li>
                                     <li><a class="dropdown-item rounded-top" href="${row?.edit_link}"><i class="fa fa-pencil"></i> Edit</a></li>
+                                    <li><a class="dropdown-item rounded-top deleteProject" href="#" data-delete="${row?.delete_link}" ><i class="fa fa-trash"></i> Hapus</a></li>
                                 </ul>
                             </div>
                         `;

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\ProjectImplementationLabels\ProjectImplementationLabelsInterface;
 use App\Repositories\Projects\ProjectRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class ProjectService
@@ -18,6 +19,11 @@ class ProjectService
     {
         $this->projectRepository = $projectRepository;
         $this->projectImpl = $projectImpl;
+    }
+
+    public function getStandaloneDetail($id)
+    {
+        return $this->projectRepository->detail($id); 
     }
 
     public function getEloquentInstance()
@@ -34,6 +40,7 @@ class ProjectService
     public function insert($data)
     {
         try{
+            DB::beginTransaction();
             $project = $this->projectRepository->create([
                 "name" => $data->project_name,
                 "analyst_name" => $data->analyst_name,
@@ -46,10 +53,12 @@ class ProjectService
             foreach($data->implementation_periods_labels as $impl){
                 $this->projectImpl->create(["label" => $impl['name'], "project_id" => $project->id]);
             }
+            DB::commit();
 
             return true;
         }
         catch(Throwable $e){
+            DB::rollBack();
             return false;
         }
     }
