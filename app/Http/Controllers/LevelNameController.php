@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PositionScale;
+use App\Models\LevelName;
 use Illuminate\Http\Request;
 
-class PositionScaleController extends Controller
+class LevelNameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PositionScaleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PositionScale  $positionScale
+     * @param  \App\Models\LevelName  $levelName
      * @return \Illuminate\Http\Response
      */
-    public function show(PositionScale $positionScale)
+    public function show(LevelName $levelName)
     {
         //
     }
@@ -52,10 +52,10 @@ class PositionScaleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PositionScale  $positionScale
+     * @param  \App\Models\LevelName  $levelName
      * @return \Illuminate\Http\Response
      */
-    public function edit(PositionScale $positionScale)
+    public function edit(LevelName $levelName)
     {
         //
     }
@@ -64,10 +64,10 @@ class PositionScaleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PositionScale  $positionScale
+     * @param  \App\Models\LevelName  $levelName
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PositionScale $positionScale)
+    public function update(Request $request, LevelName $levelName)
     {
         //
     }
@@ -75,10 +75,10 @@ class PositionScaleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PositionScale  $positionScale
+     * @param  \App\Models\LevelName  $levelName
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PositionScale $positionScale)
+    public function destroy(LevelName $levelName)
     {
         //
     }

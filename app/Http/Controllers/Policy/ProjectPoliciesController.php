@@ -43,6 +43,7 @@ class ProjectPoliciesController extends Controller
                 ->addColumn("agenda_name", fn ($data) => $data->agenda?->name)
                 ->addColumn("sub_policy_id", fn($data) => $data->id)
                 ->addColumn("delete_link", fn($data) => route("project_policies.delete", [$project_id, $data->id]))
+                ->addColumn("priority_msg", fn($data) => \App\Constants\AgendaPriority::message($data->priority))
                 ->addIndexColumn()
                 ->make();
         }

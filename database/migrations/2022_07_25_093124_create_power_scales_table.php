@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('power_scales', function (Blueprint $table) {
             $table->id();
-            $table->integer("power")->default(0);
-            $table->integer("indicator")->default(0); //See App\Constants\PowerScale
+            // $table->integer("power")->default(0);
+            // $table->integer("indicator")->default(0); //See App\Constants\PowerScale
+
+            $table->float("pw_l")->default(0.0);
+            $table->float("pw_ml")->default(0.0);
+            $table->float("pw_mh")->default(0.0);
+            $table->float("pw_h")->default(0.0);
+
             $table->unsignedBigInteger("project_id");
             $table->timestamps();
 

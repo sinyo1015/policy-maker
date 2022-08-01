@@ -27,7 +27,7 @@ return new class extends Migration
 
             $table->foreign("agenda_id")->references("id")->on("agendas")->onDelete("cascade");
             $table->foreign("project_id")->references("id")->on("projects")->onDelete("cascade");
-            $table->foreign("priority")->references("id")->on("power_scales")->onDelete("cascade");
+            // $table->foreign("priority")->references("id")->on("power_scales")->onDelete("cascade");
         });
     }
 

@@ -106,14 +106,17 @@ Daftar Kebijakan
                                 <label for="" class="form-label">Prioritas</label>
                                 <div class="row">
                                     <div class="col-3">
-                                        <div style="height: 30px; width: 120px; background-color: #abcdef;">
+                                        <div style="height: 30px; width: 120px;" :style="{'background-color': priority_color}">
 
                                         </div>
                                         <small>Indikator Prioritas</small>
                                     </div>
                                     <div class="col-9">
-                                        <select name="" id="" class="form-control">
-
+                                        <select @change="(e) => priorityChange(e.currentTarget.value)" x-model="priority" name="" id="" class="form-control">
+                                            <option selected>--Pilih Agenda yang Ditujukan---</option>
+                                            <option value="{{\App\Constants\AgendaPriority::LOW}}">Rendah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::MODERATE}}">Menengah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::HIGH}}">Tinggi</option>
                                         </select>
                                     </div>
                                 </div>
@@ -193,14 +196,17 @@ Daftar Kebijakan
                                 <label for="" class="form-label">Prioritas</label>
                                 <div class="row">
                                     <div class="col-3">
-                                        <div style="height: 30px; width: 120px; background-color: #abcdef;">
+                                        <div style="height: 30px; width: 120px" :style="{'background-color': priority_color_edit}">
 
                                         </div>
                                         <small>Indikator Prioritas</small>
                                     </div>
                                     <div class="col-9">
-                                        <select name="" id="" class="form-control">
-
+                                        <select x-model="priority_edit" @change="(e) => priorityChangeEdit(e.currentTarget.value)" name="" id="" class="form-control">
+                                            <option selected>--Pilih Agenda yang Ditujukan---</option>
+                                            <option value="{{\App\Constants\AgendaPriority::LOW}}">Rendah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::MODERATE}}">Menengah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::HIGH}}">Tinggi</option>
                                         </select>
                                     </div>
                                 </div>
@@ -263,14 +269,17 @@ Daftar Kebijakan
                                 <label for="" class="form-label">Prioritas</label>
                                 <div class="row">
                                     <div class="col-3">
-                                        <div style="height: 30px; width: 120px; background-color: #abcdef;">
+                                        <div style="height: 30px; width: 120px;" id="priorityColorDetail">
 
                                         </div>
                                         <small>Indikator Prioritas</small>
                                     </div>
                                     <div class="col-9">
-                                        <select disabled name="" id="" class="form-control">
-
+                                        <select disabled name="" id="priorityDetail" class="form-control">
+                                            <option selected>--Pilih Agenda yang Ditujukan---</option>
+                                            <option value="{{\App\Constants\AgendaPriority::LOW}}">Rendah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::MODERATE}}">Menengah</option>
+                                            <option value="{{\App\Constants\AgendaPriority::HIGH}}">Tinggi</option>
                                         </select>
                                     </div>
                                 </div>
@@ -308,6 +317,11 @@ Daftar Kebijakan
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://unpkg.com/alpinejs" defer></script>
 <script>
+    const COLOR_HIGH = "#f00";
+    const COLOR_MODERATE = "#f7ff00";
+    const COLOR_LOW = "#00ff4c";
+
+
     $(document).ready(function() {
         let dt = $("#policyTable").DataTable({
             processing: true,
@@ -327,8 +341,8 @@ Daftar Kebijakan
                     name: 'goal'
                 },
                 {
-                    data: 'priority',
-                    name: 'priority'
+                    data: 'priority_msg',
+                    name: 'priority_msg'
                 },
                 {
                     data: 'agenda_name',
@@ -394,6 +408,7 @@ Daftar Kebijakan
             is_success: false,
             errors: [],
             comments: "",
+            priority_color: "#000000",
 
             goal_edit: "",
             mechanism_edit: "",
@@ -406,15 +421,59 @@ Daftar Kebijakan
             errors_edit: [],
             comments_edit: "",
             policy_id_edit: "",
+            priority_color_edit: "#000000",
+
+            priorityChange(val) {
+                switch (val) {
+                    case "{{\App\Constants\AgendaPriority::LOW}}":
+                        this.priority_color = COLOR_LOW;
+                        break;
+                    case "{{\App\Constants\AgendaPriority::MODERATE}}":
+                        this.priority_color = COLOR_MODERATE;
+                        break;
+
+                    case "{{\App\Constants\AgendaPriority::HIGH}}":
+                        this.priority_color = COLOR_HIGH;
+                        break;
+                }
+            },
+
+            priorityChangeEdit(val) {
+                switch (val) {
+                    case "{{\App\Constants\AgendaPriority::LOW}}":
+                        this.priority_color_edit = COLOR_LOW;
+                        break;
+                    case "{{\App\Constants\AgendaPriority::MODERATE}}":
+                        this.priority_color_edit = COLOR_MODERATE;
+                        break;
+
+                    case "{{\App\Constants\AgendaPriority::HIGH}}":
+                        this.priority_color_edit = COLOR_HIGH;
+                        break;
+                }
+            },
 
             detailPolicy(e) {
                 let detail = e.currentTarget.getAttribute("data-detail");
                 let subDetail = JSON.parse(detail);
-                $("#goalDetail").html(subDetail?.comments);
+                $("#goalDetail").html(subDetail?.goal);
                 $("#mechanismDetail").html(subDetail?.mechanism);
                 $("#indicatorDetail").html(subDetail?.indicator);
                 $("#commentDetail").html(subDetail?.comments);
                 $("#agendaDetail").val(subDetail?.agenda_id).change();
+                $("#priorityDetail").val(subDetail?.priority).change();
+                switch (subDetail?.priority?.toString()) {
+                    case "{{\App\Constants\AgendaPriority::LOW}}":
+                        $("#priorityColorDetail").css("background-color", COLOR_LOW);
+                        break;
+                    case "{{\App\Constants\AgendaPriority::MODERATE}}":
+                        $("#priorityColorDetail").css("background-color", COLOR_MODERATE);
+                        break;
+
+                    case "{{\App\Constants\AgendaPriority::HIGH}}":
+                        $("#priorityColorDetail").css("background-color", COLOR_HIGH);
+                        break;
+                }
 
                 detailModal.show();
             },
@@ -430,6 +489,19 @@ Daftar Kebijakan
                 this.priority_edit = subDetail?.priority;
                 this.comments_edit = subDetail?.comments;
                 this.policy_id_edit = subDetail?.id;
+
+                switch (subDetail?.priority?.toString()) {
+                    case "{{\App\Constants\AgendaPriority::LOW}}":
+                        this.priority_color_edit = COLOR_LOW;
+                        break;
+                    case "{{\App\Constants\AgendaPriority::MODERATE}}":
+                        this.priority_color_edit = COLOR_MODERATE;
+                        break;
+
+                    case "{{\App\Constants\AgendaPriority::HIGH}}":
+                        this.priority_color_edit = COLOR_HIGH;
+                        break;
+                }
 
                 editModal.show();
             },

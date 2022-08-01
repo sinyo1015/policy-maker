@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PowerScale;
+use App\Models\Sector;
 use Illuminate\Http\Request;
 
-class PowerScaleController extends Controller
+class SectorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PowerScaleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PowerScale  $powerScale
+     * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function show(PowerScale $powerScale)
+    public function show(Sector $sector)
     {
         //
     }
@@ -52,10 +52,10 @@ class PowerScaleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PowerScale  $powerScale
+     * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function edit(PowerScale $powerScale)
+    public function edit(Sector $sector)
     {
         //
     }
@@ -64,10 +64,10 @@ class PowerScaleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PowerScale  $powerScale
+     * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PowerScale $powerScale)
+    public function update(Request $request, Sector $sector)
     {
         //
     }
@@ -75,10 +75,10 @@ class PowerScaleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PowerScale  $powerScale
+     * @param  \App\Models\Sector  $sector
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PowerScale $powerScale)
+    public function destroy(Sector $sector)
     {
         //
     }

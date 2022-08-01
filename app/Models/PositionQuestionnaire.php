@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PowerScale extends Model
+class PositionQuestionnaire extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "pw_l",
-        "pw_ml",
-        "pw_mh",
-        "pw_h",
+        "questionnaire",
         "project_id"
-    ];
+    ];  
 }

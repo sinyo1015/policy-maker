@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agendas', function (Blueprint $table) {
+        Schema::create('power_questionnaires', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+            $table->longText("questionnaire");
             $table->unsignedBigInteger("project_id");
             $table->timestamps();
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agendas');
+        Schema::dropIfExists('power_questionnaires');
     }
 };
