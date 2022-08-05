@@ -38,7 +38,7 @@ class PlayerRequest extends BaseRequest
     {
         return [
             "name" => "required|string",
-            "details" => "nullable|string",
+            "details" => "required|string",
             "sector" => "required|numeric",
             "level" => "required|numeric",
             "position_scale" => "required|numeric",

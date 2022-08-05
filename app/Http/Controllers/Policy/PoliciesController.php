@@ -11,7 +11,7 @@ use App\Services\PolicyService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class ProjectPoliciesController extends Controller
+class PoliciesController extends Controller
 {
 
     private PolicyService $service;

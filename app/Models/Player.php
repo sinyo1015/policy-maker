@@ -16,7 +16,9 @@ class Player extends Model
         "level_id",
         "position",
         "power",
-        "project_id"
+        "project_id",
+        "pos_x",
+        "pos_y"
     ];
 
     public function level()

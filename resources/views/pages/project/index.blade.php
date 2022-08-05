@@ -60,89 +60,99 @@ Proyek
 
             <div class="pt-2">
                 <div class="row mb-3">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="align-middle">
-                                        <i class="fa fa-times" style="font-size: 48pt;"></i>
-                                    </span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h5>A. Kebijakan</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, saepe?</p>
+                    <a href="{{route('project_policies.index', request()->segment(2))}}">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span class="align-middle mx-auto">
+                                            <i class="fa-solid fa-scale-balanced" style="font-size: 32pt;"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>A. Kebijakan</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, saepe?</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="row mb-3">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="align-middle">
-                                        <i class="fa fa-times" style="font-size: 48pt;"></i>
-                                    </span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h5>B. Pihak-Pihak</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                    <a href="{{route('project_player.index', request()->segment(2))}}">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span class="align-middle mx-auto">
+                                            <i class="fa-solid fa-people-group" style="font-size: 32pt;"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>B. Pihak-Pihak</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="row mb-3">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="align-middle">
-                                        <i class="fa fa-times" style="font-size: 48pt;"></i>
-                                    </span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h5>C. Strategi</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                    <a href="{{route('project_consequences.index', request()->segment(2))}}">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span class="align-middle mx-auto">
+                                            <i class="fa-solid fa-chess-knight" style="font-size: 32pt;"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>C. Strategi</h5>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="row mb-3">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="align-middle">
-                                        <i class="fa fa-times" style="font-size: 48pt;"></i>
-                                    </span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h5>D. Impact</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                    <a href="">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span class="align-middle mx-auto">
+                                            <i class="fa-solid fa-arrow-down-up-across-line" style="font-size: 32pt;"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>D. Impact</h5>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="row mb-3">
-                    <div class="card rounded">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <span class="align-middle">
-                                        <i class="fa fa-times" style="font-size: 48pt;"></i>
-                                    </span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h5>E. Report</h5>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                    <a href="">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span class="align-middle mx-auto">
+                                            <i class="fa-solid fa-receipt" style="font-size: 32pt;"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5>E. Report</h5>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

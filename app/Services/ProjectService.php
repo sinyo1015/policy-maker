@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\MasterSuggestedStrategy;
 use App\Repositories\ProjectImplementationLabels\ProjectImplementationLabelsInterface;
 use App\Repositories\Projects\ProjectRepositoryInterface;
+use App\Repositories\SuggestedStrategies\SuggestedStrategyRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -12,13 +14,16 @@ class ProjectService
 {
     private ProjectRepositoryInterface $projectRepository;
     private ProjectImplementationLabelsInterface $projectImpl;
+    private SuggestedStrategyRepositoryInterface $strategy;
 
     public function __construct(
         ProjectRepositoryInterface $projectRepository,
-        ProjectImplementationLabelsInterface $projectImpl)
+        ProjectImplementationLabelsInterface $projectImpl,
+        SuggestedStrategyRepositoryInterface $strategy)
     {
         $this->projectRepository = $projectRepository;
         $this->projectImpl = $projectImpl;
+        $this->strategy = $strategy;
     }
 
     public function getStandaloneDetail($id)
@@ -37,6 +42,21 @@ class ProjectService
         return $this->projectRepository->getAll();
     }
 
+    public function populateStrategies($id)
+    {
+        $data = MasterSuggestedStrategy::all();
+
+        foreach($data as $_data){
+            $this->strategy->create([
+                "label" => $_data->label,
+                "text" => $_data->text,
+                "category" => $_data->category, //See App\Constants\Strategies\StrategyCategory
+                "type" => $_data->type, //See App\Constants\Strategies\StrategyType,
+                "project_id" => $id
+            ]);
+        }
+    }
+
     public function insert($data)
     {
         try{
@@ -53,6 +73,9 @@ class ProjectService
             foreach($data->implementation_periods_labels as $impl){
                 $this->projectImpl->create(["label" => $impl['name'], "project_id" => $project->id]);
             }
+
+            $this->populateStrategies($project->id);
+
             DB::commit();
 
             return true;

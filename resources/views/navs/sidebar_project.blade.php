@@ -14,7 +14,7 @@
                     </svg></a></div>
         </div>
         <ul class="nav flex-column pt-3 pt-md-0">
-            <li class="nav-item"><a href="../../index.html" class="nav-link d-flex align-items-center"><span class="sidebar-icon"><img src="../../assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo"> </span><span class="mt-1 ms-1 sidebar-text">Volt Overview</span></a></li>
+            <li class="nav-item"><a href="../../index.html" class="nav-link d-flex align-items-center"><span class="sidebar-icon"><img src="{{asset('assets/img/brand/light.svg')}}" height="20" width="20" alt="Volt Logo"> </span><span class="mt-1 ms-1 sidebar-text">Volt Overview</span></a></li>
             <li class="nav-item _project_sidebar_title py-2">Nama Proyek: <br>{{request()->attributes->get('project')?->name}}</li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             <li class="nav-item"><a href="{{route('project.index')}}" class="nav-link">
@@ -24,7 +24,7 @@
                     <span class="sidebar-text">Daftar Proyek</span>
                 </a>
             </li>
-            <li class="nav-item"><a href="../../pages/dashboard/dashboard.html" class="nav-link">
+            <li class="nav-item"><a href="{{route('project_detail.index', request()->segment(2))}}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -75,11 +75,11 @@
                 <div class="multi-level collapse" role="list" id="submenu-app2" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_player.index', request()->segment(2))}}"><span class="sidebar-text">B1. Daftar Pihak</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="#"><span class="sidebar-text">B2. Peta Posisi Para Pihak</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">B3. Daftar Kemungkinan</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">B4. Daftar Konsekuensi</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">B5. Daftar Ketertarikan</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">B6. Peta Koalisi</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_player.map', request()->segment(2))}}"><span class="sidebar-text">B2. Peta Posisi Para Pihak</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_player.feasibility', request()->segment(2))}}"><span class="sidebar-text">B3. Daftar Kemungkinan</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_consequences.index', request()->segment(2))}}"><span class="sidebar-text">B4. Daftar Konsekuensi</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_interests.index', request()->segment(2))}}"><span class="sidebar-text">B5. Daftar Ketertarikan</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_coalitions.show_map', request()->segment(2))}}"><span class="sidebar-text">B6. Peta Koalisi</span></a></li>
                     </ul>
                 </div>
             </li>
@@ -101,8 +101,8 @@
                 </span>
                 <div class="multi-level collapse" role="list" id="submenu-app3" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">C1. Kesempatan & Rintangan</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">C2. Rekomendasi Strategi</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_opp_obs.index', request()->segment(2))}}"><span class="sidebar-text">C1. Kesempatan & Rintangan</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_strategies.index', request()->segment(2))}}"><span class="sidebar-text">C2. Rekomendasi Strategi</span></a></li>
                         <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">C3. Daftar Strategi</span></a></li>
                     </ul>
                 </div>

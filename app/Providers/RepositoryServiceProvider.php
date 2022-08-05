@@ -18,6 +18,10 @@ use App\Repositories\LevelNames\{
     LevelNameRepository,
     LevelNameRepositoryInterface
 };
+use App\Repositories\OpportunityObstacles\{
+    OpportunityObstacleRepository,
+    OpportunityObstacleRepositoryInterface
+};
 use App\Repositories\Players\{
     PlayerRepository,
     PlayerRepositoryInterface
@@ -25,6 +29,14 @@ use App\Repositories\Players\{
 use App\Repositories\Policies\{
     PolicyRepository,
     PolicyRepositoryInterface
+};
+use App\Repositories\PolicyConsequences\{
+    PolicyConsequenceRepository,
+    PolicyConsequenceRepositoryInterface
+};
+use App\Repositories\PolicyInterests\{
+    PolicyInterestRepository,
+    PolicyInterestRepositoryInterface
 };
 use App\Repositories\ProjectImplementationLabels\{
     ProjectImplementationLabelsInterface,
@@ -54,6 +66,10 @@ use App\Repositories\Sectors\{
     SectorRepository,
     SectorRepositoryInterface
 };
+use App\Repositories\SuggestedStrategies\{
+    SuggestedStrategyRepository,
+    SuggestedStrategyRepositoryInterface
+};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -78,6 +94,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PositionScaleRepositoryInterface::class, PositionScaleRepository::class);
         $this->app->bind(PowerScaleRepositoryInterface::class, PowerScaleRepository::class);
         $this->app->bind(PlayerRepositoryInterface::class, PlayerRepository::class);
+        $this->app->bind(PolicyConsequenceRepositoryInterface::class, PolicyConsequenceRepository::class);
+        $this->app->bind(PolicyInterestRepositoryInterface::class, PolicyInterestRepository::class);
+        $this->app->bind(OpportunityObstacleRepositoryInterface::class, OpportunityObstacleRepository::class);
+        $this->app->bind(SuggestedStrategyRepositoryInterface::class, SuggestedStrategyRepository::class);
     }
 
     /**

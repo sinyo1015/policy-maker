@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // $this->call(AgendaSeeder::class);
+        $this->call(MasterSuggestedStrategiesSeeder::class);
     }
 }

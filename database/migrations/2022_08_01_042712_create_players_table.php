@@ -22,6 +22,8 @@ return new class extends Migration
             $table->float("position");
             $table->float("power");
             $table->unsignedBigInteger("project_id");
+            $table->double("pos_x")->nullable();
+            $table->double("pos_y")->nullable();
             $table->timestamps();
 
             $table->foreign("sector_id")->references("id")->on("sectors")->onDelete("SET NULL");

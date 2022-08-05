@@ -162,4 +162,18 @@ class PlayerController extends Controller
 
         return return_json();
     }
+
+    public function showMap(Request $request, $id)
+    {
+        $data = $this->player->getPlayersGroupped($id);
+
+        return view("pages.project.player_positions.index", compact("data"));
+    }
+
+    public function showFeasibility(Request $request, $id)
+    {
+        $data = $this->player->getFeasibility($id);
+
+        return view("pages.project.feasibilities.index", compact("data"));
+    }
 }
