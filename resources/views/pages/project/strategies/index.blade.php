@@ -5,15 +5,15 @@ Strategi
 @endsection
 
 @section("breadcrumb")
-Daftar Strategi
+Rekomendasi Strategi
 @endsection
 
 @section("title")
-Daftar Strategi
+Rekomendasi Strategi
 @endsection
 
 @section("current_page")
-Daftar Strategi
+Rekomendasi Strategi
 @endsection
 
 @section("contents")

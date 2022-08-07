@@ -103,7 +103,7 @@
                     <ul class="flex-column nav">
                         <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_opp_obs.index', request()->segment(2))}}"><span class="sidebar-text">C1. Kesempatan & Rintangan</span></a></li>
                         <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_strategies.index', request()->segment(2))}}"><span class="sidebar-text">C2. Rekomendasi Strategi</span></a></li>
-                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="../../pages/tables/bootstrap-tables.html"><span class="sidebar-text">C3. Daftar Strategi</span></a></li>
+                        <li class="nav-item"><a class="nav-link _project_sidebar_links" href="{{route('project_predefined_strategy.index', request()->segment(2))}}"><span class="sidebar-text">C3. Daftar Strategi</span></a></li>
                     </ul>
                 </div>
             </li>

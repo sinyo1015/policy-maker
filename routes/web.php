@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Project\ProjectController;
 use App\Http\Controllers\Project\ProjectDetailController;
 use App\Http\Controllers\Project\ProjectPropertiesController;
+use App\Http\Controllers\Project\StrategyController;
 use App\Http\Controllers\Project\SuggestedStrategyController;
 
 /*
@@ -104,6 +105,15 @@ Route::group(['prefix' => "project/{id}", 'middleware' => ["project_detail"]], f
         Route::post("/", [SuggestedStrategyController::class, "store"])->name("project_strategies.create_action");
         Route::post("edit", [SuggestedStrategyController::class, "update"])->name("project_strategies.edit_action");
         Route::delete("/{strategy_id}", [SuggestedStrategyController::class, "destroy"])->name("project_strategies.delete");
+    });
+
+    Route::group(['prefix' => "predefined_strategies"], function(){
+        Route::get("/", [StrategyController::class, "index"])->name("project_predefined_strategy.index");
+        Route::get("create", [StrategyController::class, "create"])->name("project_predefined_strategy.create");
+        Route::post("create", [StrategyController::class, "store"])->name("project_predefined_strategy.create_action");
+        Route::get("get_strategies", [StrategyController::class, "getStrategies"])->name("project_predefined_strategy.get_strategies");
+        Route::get("get_player_opses", [StrategyController::class, "getPlayerOpses"])->name("project_predefined_strategy.get_opses");
+        Route::delete("/{strategy_id}", [StrategyController::class, "destroy"])->name("project_predefined_strategy.delete");
     });
     
 });

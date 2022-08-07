@@ -66,6 +66,10 @@ use App\Repositories\Sectors\{
     SectorRepository,
     SectorRepositoryInterface
 };
+use App\Repositories\Strategies\{
+    StrategyRepository,
+    StrategyRepositoryInterface
+};
 use App\Repositories\SuggestedStrategies\{
     SuggestedStrategyRepository,
     SuggestedStrategyRepositoryInterface
@@ -98,6 +102,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PolicyInterestRepositoryInterface::class, PolicyInterestRepository::class);
         $this->app->bind(OpportunityObstacleRepositoryInterface::class, OpportunityObstacleRepository::class);
         $this->app->bind(SuggestedStrategyRepositoryInterface::class, SuggestedStrategyRepository::class);
+        $this->app->bind(StrategyRepositoryInterface::class, StrategyRepository::class);
     }
 
     /**
