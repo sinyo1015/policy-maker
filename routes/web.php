@@ -113,7 +113,10 @@ Route::group(['prefix' => "project/{id}", 'middleware' => ["project_detail"]], f
         Route::post("create", [StrategyController::class, "store"])->name("project_predefined_strategy.create_action");
         Route::get("get_strategies", [StrategyController::class, "getStrategies"])->name("project_predefined_strategy.get_strategies");
         Route::get("get_player_opses", [StrategyController::class, "getPlayerOpses"])->name("project_predefined_strategy.get_opses");
+        Route::get("edit/{strategy_id}", [StrategyController::class, "edit"])->name("project_predefined_strategy.edit");
+        Route::post("edit/{strategy_id}", [StrategyController::class, "update"])->name("project_predefined_strategy.edit_action");
         Route::delete("/{strategy_id}", [StrategyController::class, "destroy"])->name("project_predefined_strategy.delete");
+        Route::get("/{strategy_id}", [StrategyController::class, "show"])->name("project_predefined_strategy.detail");
     });
     
 });

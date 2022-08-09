@@ -23,4 +23,9 @@ class Strategy extends Model
     {
         return $this->hasOne(Player::class, "id", "player_id");
     }
+
+    public function strategy()
+    {
+        return $this->hasOne(SuggestedStrategy::class, "id", "predefined_strategy_id");
+    }
 }

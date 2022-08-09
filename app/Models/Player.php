@@ -30,4 +30,9 @@ class Player extends Model
     {
         return $this->belongsTo(Sector::class, "sector_id");
     }
+
+    public function oops()
+    {
+        return $this->hasMany(OpportunityObstacle::class, "player_id", "id");
+    }
 }

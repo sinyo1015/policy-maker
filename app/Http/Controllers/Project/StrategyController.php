@@ -33,9 +33,9 @@ class StrategyController extends Controller
 
             return DataTables::of($projects)
                 ->addIndexColumn()
-                ->addColumn("edit_link", fn($item) => route("project.edit", $item->id))
-                ->addColumn("delete_link", fn($item) => route("project_predefined_strategy.delete", [$id, $item->id]))
-                ->addColumn("open_project_link", fn($item) => route("project_detail.index", $item->id))
+                ->addColumn("edit_link", fn ($item) => route("project_predefined_strategy.edit", [$id, $item->id]))
+                ->addColumn("delete_link", fn ($item) => route("project_predefined_strategy.delete", [$id, $item->id]))
+                ->addColumn("detail_link", fn ($item) => route("project_predefined_strategy.detail", [$id, $item->id]))
                 ->make();
         }
 
@@ -87,9 +87,9 @@ class StrategyController extends Controller
      * @param  \App\Models\Strategy  $strategy
      * @return \Illuminate\Http\Response
      */
-    public function show(Strategy $strategy)
+    public function show(Request $request, $id, $strategyId)
     {
-        //
+        return return_json($this->strategyService->getDetails($strategyId, $id));
     }
 
     /**
@@ -98,9 +98,12 @@ class StrategyController extends Controller
      * @param  \App\Models\Strategy  $strategy
      * @return \Illuminate\Http\Response
      */
-    public function edit(Strategy $strategy)
+    public function edit(Request $request, $id, $strategyId)
     {
-        //
+        $players = $this->strategyService->getGrouppedPlayer($id);
+        $strategy = $this->strategyService->getDetails($strategyId, $id);
+
+        return view("pages.project.predefined_strategies.edit", compact("id", "players", "strategy", "strategyId"));
     }
 
     /**
@@ -110,9 +113,15 @@ class StrategyController extends Controller
      * @param  \App\Models\Strategy  $strategy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Strategy $strategy)
+    public function update(StrategyRequest $request, $id, $strategyId)
     {
-        //
+        if ($request->validator->fails())
+            return return_json(['errors' => $request->errorMessages()], 403, "Terjadi kesalahan saat mengubah entri");
+
+        if (!$this->strategyService->update($request, $strategyId))
+            return return_json([], 403, "Terjadi kesalahan saat mengubah entri");
+
+        return return_json();
     }
 
     /**
@@ -123,7 +132,7 @@ class StrategyController extends Controller
      */
     public function destroy(Request $request, $id, $strategyId)
     {
-        if(!$this->strategyService->delete($strategyId))
+        if (!$this->strategyService->delete($strategyId))
             return return_json([], 403, "Terjadi kesalahan saat menghapus strategi");
 
         return return_json();
