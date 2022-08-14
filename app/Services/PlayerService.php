@@ -49,6 +49,7 @@ class PlayerService
         try{
             DB::beginTransaction();
             $this->player->create([
+                "alt_name" => $data->alt_name,
                 "name" => $data->name,
                 "details" => $data->details,
                 "sector_id" => $data->sector, 
@@ -73,6 +74,7 @@ class PlayerService
         try{
             DB::beginTransaction();
             $this->player->update($id, [
+                "alt_name" => $data->alt_name,
                 "name" => $data->name,
                 "details" => $data->details,
                 "sector_id" => $data->sector, 
@@ -159,11 +161,40 @@ class PlayerService
     public function getFeasibility($id)
     {
         $scales = $this->project->getScales($id);
+        $players = $this->player->getWhereMany(["project_id" => $id]);
 
         $std = new stdClass;
-        $std->support = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position > ? AND project_id = ?", [$scales?->ps_nh, $id]);
-        $std->neutral = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position <= ? AND position >= ? AND project_id = ?", [$scales?->ps_nl, $scales?->ps_nh, $id]);
-        $std->oposition = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position >= ? AND project_id = ?", [$scales?->ps_dlh, $id]);
+        // $std->support = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position > ? AND project_id = ?", [$scales?->ps_nh, $id]);
+        // $std->neutral = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position <= ? AND position >= ? AND project_id = ?", [$scales?->ps_nl, $scales?->ps_nh, $id]);
+        // $std->oposition = DB::selectOne("SELECT ABS(SUM(position)) as position_sum FROM players WHERE position >= ? AND project_id = ?", [$scales?->ps_dlh, $id]);
+
+        $std->support = new stdClass;
+        $std->support->position_sum = 0;
+        $std->neutral = new stdClass;
+        $std->neutral->position_sum = 0;
+        $std->oposition = new stdClass;
+        $std->oposition->position_sum = 0;
+
+        $players->each(function($item) use(&$std, $scales){
+            $pos = abs($item->position);
+            $pow = abs($item->power);
+
+            if($item->position <= $scales?->ps_dll){
+                $std->oposition->position_sum += $pos * $pow;
+                return;
+            }
+
+            if($item->position >= $scales?->ps_nl && $item->position <= $scales?->ps_nh){
+                $std->neutral->position_sum += $pos * $pow;
+                return;
+            }
+
+            if($item->position > $scales?->ps_nh){
+                $std->support->position_sum += $pos * $pow;
+                return;
+            }
+        });
+
 
         return $std;
     }

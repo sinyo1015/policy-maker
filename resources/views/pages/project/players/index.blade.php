@@ -43,6 +43,65 @@ Daftar Pihak
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetail" style="display: none;" aria-modal="true" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="h6 modal-title">Detail Pihak</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Nama Pihak</label>
+                                <input :value="name_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Inisial</label>
+                                <input :value="abbrv_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <label for="">Informasi tambahan mengenai pihak ini</label>
+                                <textarea :value="infos_det" disabled name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Sektor</label>
+                                <input :value="sector_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Level</label>
+                                <input :value="level_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Posisi Pihak</label>
+                                <input :value="position_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="">Kekuatan Pihak</label>
+                                <input :value="power_det" disabled type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -140,8 +199,35 @@ Daftar Pihak
         });
     });
 
+    let detailModal = new bootstrap.Modal(document.getElementById('modalDetail'), {
+        keyboard: false
+    });
+
     function __alpineInit(){
         return{
+
+            name_det: "",
+            abbrv_det: "",
+            infos_det: "",
+            sector_det: "",
+            level_det: "",
+            position_det: "",
+            power_det: "",
+
+
+            detailPlayer(e){
+                let details = e.currentTarget.getAttribute("data-detail");
+                let detail = JSON.parse(details);
+                this.name_det = detail?.name;
+                this.abbrv_det = detail?.alt_name;
+                this.infos_det = detail?.details;
+                this.sector_det = detail?.sector?.name;
+                this.level_det = detail?.level?.name;
+                this.position_det = detail?.position_label;
+                this.power_det = detail?.power_label;
+                detailModal.show();
+            },
+
             async deletePlayer(e) {
                 e.preventDefault();
                 let deleteLink = e.currentTarget.getAttribute("data-delete");

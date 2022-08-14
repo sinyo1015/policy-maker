@@ -186,7 +186,7 @@ Properti Proyek - {{$data?->name}}
                 </div>
             </div>
         </div>
-        <div class="col-md-12 mb-3">
+        <!-- <div class="col-md-12 mb-3">
             <div class="card border-light shadow-sm components-section">
                 <div class="card-header">
                     <h5 class="card-title">Kuisioner</h5>
@@ -295,7 +295,7 @@ Properti Proyek - {{$data?->name}}
 
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

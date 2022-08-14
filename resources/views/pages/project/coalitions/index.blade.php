@@ -236,7 +236,7 @@ Peta Koalisi
                             .attr("y", parseFloat(box.attr("y")) + 15)
                             .attr("dy", ".35em")
                             .attr("color", "white")
-                            .text(subItem?.name);
+                            .text(subItem?.alt_name);
 
                         initial += 35;
                     }

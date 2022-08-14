@@ -45,6 +45,12 @@ Edit Pihak
                         <input x-model="player_name" type="text" class="form-control">
                     </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="" class="form-label">Inisial</label>
+                        <input x-model="alt_name" type="text" class="form-control">
+                    </div>
+                </div>
                 <div class="col-md-12 mb-3">
                     <div class="form-group">
                         <label for="" class="form-label">Informasi Tambahan Mengenai Pihak ini</label>
@@ -238,6 +244,7 @@ Edit Pihak
             sectors: JSON.parse(`@json($data["sectors"])`),
 
             player_name: "{{$player->name}}",
+            alt_name: "{{$player->alt_name}}",
             player_info: "{{$player->details}}",
             selected_sector: "{{$player->sector_id}}",
             selected_level: "{{$player->level_id}}",
@@ -361,6 +368,7 @@ Edit Pihak
                 try {
                     let response = await axios.post("{{route('project_player.edit_action', [$id, $player->id])}}", {
                         "_token": "{{csrf_token()}}",
+                        alt_name: this.alt_name,
                         name: this.player_name,
                         details: this.player_info,
                         sector: this.selected_sector,

@@ -29,7 +29,8 @@ class StrategyController extends Controller
         if ($request->ajax()) {
             $projects = $this->strategyService->getEloquentInstance()
                 ->query()
-                ->with(["player"]);
+                ->with(["player"])
+                ->where(["project_id" => $id]);
 
             return DataTables::of($projects)
                 ->addIndexColumn()

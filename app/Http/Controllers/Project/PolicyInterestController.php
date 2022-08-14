@@ -29,7 +29,7 @@ class PolicyInterestController extends Controller
         if($request->ajax()){
             $interests = $this->interestService->getInterestInstance()
                 ->query()
-                ->with(["player", "interest"])
+                ->with(["player", "interest_sub"])
                 ->where(["project_id" => $id]);
 
             return DataTables::of($interests)

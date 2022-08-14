@@ -20,6 +20,7 @@ class PlayerRequest extends BaseRequest
     public function attributes()
     {
         return [
+            "alt_name" => "Inisial",
             "name" => "Nama Pihak",
             "details" => "Informasi Tambahan",
             "sector" => "Sektor",
@@ -37,6 +38,7 @@ class PlayerRequest extends BaseRequest
     public function rules()
     {
         return [
+            "alt_name" => "required|string",
             "name" => "required|string",
             "details" => "required|string",
             "sector" => "required|numeric",

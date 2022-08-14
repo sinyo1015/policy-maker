@@ -13,8 +13,8 @@ class AgendaService
         $this->agenda = $agenda;
     }
 
-    public function getAllAgendas()
+    public function getAllAgendas($project_id)
     {
-        return $this->agenda->getAll();
+        return $this->agenda->getWhereMany(["project_id" => $project_id]);
     }
 }

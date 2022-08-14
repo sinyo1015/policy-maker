@@ -11,6 +11,7 @@ class Player extends Model
 
     protected $fillable = [
         "name",
+        "alt_name",
         "details",
         "sector_id",
         "level_id",

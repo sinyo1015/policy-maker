@@ -48,7 +48,7 @@ class PoliciesController extends Controller
                 ->make();
         }
 
-        $agendas = $this->agendaService->getAllAgendas();
+        $agendas = $this->agendaService->getAllAgendas($project_id);
 
         return view("pages.project.policies.index", compact("agendas", "project_id"));
     }

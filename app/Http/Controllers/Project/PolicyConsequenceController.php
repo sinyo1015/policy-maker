@@ -29,7 +29,8 @@ class PolicyConsequenceController extends Controller
             $projects = $this->consequenceService
                 ->getConsequencesEloquentInstance()
                 ->query()
-                ->with(["player", "consequence"]);
+                ->with(["player", "consequence"])
+                ->where(["project_id" => $id]);
 
             return DataTables::of($projects)
                 ->addIndexColumn()

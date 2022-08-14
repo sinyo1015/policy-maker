@@ -14,7 +14,7 @@
                     </svg></a></div>
         </div>
         <ul class="nav flex-column pt-3 pt-md-0">
-            <li class="nav-item"><a href="../../index.html" class="nav-link d-flex align-items-center"><span class="sidebar-icon"><img src="{{asset('assets/img/brand/light.svg')}}" height="20" width="20" alt="Volt Logo"> </span><span class="mt-1 ms-1 sidebar-text">Volt Overview</span></a></li>
+            <li class="nav-item"><a href="{{route('project.index')}}" class="nav-link d-flex align-items-center"><span class="sidebar-icon"><img src="{{asset('assets/img/brand/light.svg')}}" height="20" width="20" alt="Volt Logo"> </span><span class="mt-1 ms-1 sidebar-text">Policy Maker</span></a></li>
             <li class="nav-item _project_sidebar_title py-2">Nama Proyek: <br>{{request()->attributes->get('project')?->name}}</li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             <li class="nav-item"><a href="{{route('project.index')}}" class="nav-link">

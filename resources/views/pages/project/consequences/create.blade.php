@@ -33,7 +33,7 @@ Tambah Konsekuensi
                 </template>
                 <template x-if="is_success">
                     <div class="alert alert-success">
-                        Berhasil menambahkan pihak, anda sedang diarahkan ke daftar konsekuensi
+                        Berhasil menambahkan konsekuensi, anda sedang diarahkan ke daftar konsekuensi
                     </div>
                 </template>
             </div>

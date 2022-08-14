@@ -71,7 +71,7 @@ Proyek
                                     </div>
                                     <div class="col-md-10">
                                         <h5>A. Kebijakan</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, saepe?</p>
+                                        <p>Definisi dan analisa isi dari konten kebijakan yang dibuat</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@ Proyek
                                     </div>
                                     <div class="col-md-10">
                                         <h5>B. Pihak-Pihak</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                                        <p>Menganalisa kunci dari para pihak, meletakkan pada posisi dan kekuatan yang sesuai</p>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@ Proyek
                                     </div>
                                     <div class="col-md-10">
                                         <h5>C. Strategi</h5>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                                        <p>Mengembangkan strategi politikal</p>
                                     </div>
                                 </div>
                             </div>
@@ -128,14 +128,14 @@ Proyek
                                     </div>
                                     <div class="col-md-10">
                                         <h5>D. Impact</h5>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est, at similique. </p>
+                                        <p>Menganalisa dampak terhadap strategi yang akan diimplementasikan</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <a href="">
                         <div class="card rounded">
                             <div class="card-body">
@@ -153,7 +153,7 @@ Proyek
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

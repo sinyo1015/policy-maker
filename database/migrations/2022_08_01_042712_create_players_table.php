@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("alt_name");
             $table->longText("details");
             $table->unsignedBigInteger("sector_id")->nullable();
             $table->unsignedBigInteger("level_id")->nullable();

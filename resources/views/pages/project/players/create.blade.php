@@ -45,6 +45,12 @@ Buat Pihak
                         <input x-model="player_name" type="text" class="form-control">
                     </div>
                 </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="" class="form-label">Inisial</label>
+                        <input x-model="alt_name" type="text" class="form-control">
+                    </div>
+                </div>
                 <div class="col-md-12 mb-3">
                     <div class="form-group">
                         <label for="" class="form-label">Informasi Tambahan Mengenai Pihak ini</label>
@@ -85,71 +91,68 @@ Buat Pihak
                                 <input @input="(e) => {changeSlider(e.currentTarget.value)}" x-model="position_scale" type="range" class="form-range" min="{{$dataScale->ps_dh}}" max="{{$dataScale->ps_sh}}" step="0.5" id="customRange3">
                             </div>
 
-                            <div class="row mx-center p-4 gap-4">
-                                <div class="col-md-3" style="border-style: dotted; background-color: #ff7373;">
-                                    <div>
-                                        <div class="row p-2">
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_dh')" x-bind:checked="selected_position_scale === 'ps_dh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Tinggi</label>
+                            <div>
+                                <div class="row p-4 gap-4">
+                                    <div class="col-md-3" style="border-style: dotted; background-color: #ff7373;">
+                                        <div>
+                                            <div class="row p-2">
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_dh')" x-bind:checked="selected_position_scale === 'ps_dh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Tinggi</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_dmh')" x-bind:checked="selected_position_scale === 'ps_dmh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Sedang</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_dlh')" x-bind:checked="selected_position_scale === 'ps_dlh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Rendah</label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_dmh')" x-bind:checked="selected_position_scale === 'ps_dmh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Sedang</label>
+                                            <div class="py-3">
+                                                <center>
+                                                    <h4>Menolak</h4>
+                                                </center>
                                             </div>
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_dlh')" x-bind:checked="selected_position_scale === 'ps_dlh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Rendah</label>
-                                            </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <center>
-                                                <h4>Menolak</h4>
-                                            </center>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3" style="border-style: dotted;">
-                                    <div>
-                                        <div class="row p-2">
-                                            <div class="col-md-4 mx-auto">
-                                                <input @change="() => changeRadioScale('ps_nh')" x-bind:checked="selected_position_scale === 'ps_nh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Netral</label>
+                                    <div class="col-md-3" style="border-style: dotted;">
+                                        <div>
+                                            <div class="row p-2">
+                                                <div class="col-md-4 mx-auto">
+                                                    <input @change="() => changeRadioScale('ps_nh')" x-bind:checked="selected_position_scale === 'ps_nh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Netral</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="py-3">
-                                            <center>
-                                                <h4>Netral</h4>
-                                            </center>
+                                            <div class="py-3">
+                                                <center>
+                                                    <h4>Netral</h4>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3" style="border-style: dotted; background-color: #3fe827;">
-                                    <div>
-                                        <div class="row p-2">
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_slh')" x-bind:checked="selected_position_scale === 'ps_slh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Rendah</label>
+                                    <div class="col-md-3" style="border-style: dotted; background-color: #3fe827;">
+                                        <div>
+                                            <div class="row p-2">
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_slh')" x-bind:checked="selected_position_scale === 'ps_slh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Rendah</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_smh')" x-bind:checked="selected_position_scale === 'ps_smh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Sedang</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input @change="() => changeRadioScale('ps_sh')" x-bind:checked="selected_position_scale === 'ps_sh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
+                                                    <label for="">Tinggi</label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_smh')" x-bind:checked="selected_position_scale === 'ps_smh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Sedang</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input @change="() => changeRadioScale('ps_sh')" x-bind:checked="selected_position_scale === 'ps_sh'" type="radio" name="paramScalePosition" id="" class="form-check-input"><br>
-                                                <label for="">Tinggi</label>
+                                            <div class="py-3">
+                                                <center>
+                                                    <h4>Mendukung</h4>
+                                                </center>
                                             </div>
                                         </div>
-                                        <div class="py-3">
-                                            <center>
-                                                <h4>Mendukung</h4>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="my-auto">
-                                        <button class="btn btn-secondary align-middle">Tentukan via kuisioner</button>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +181,7 @@ Buat Pihak
                             </div>
 
                             <div class="row mx-center p-4 gap-4">
-                                <div class="col-md-10" style="border-style: dotted;">
+                                <div class="col-md-12" style="border-style: dotted;">
                                     <div>
                                         <div class="row p-2">
                                             <div class="col-md-4">
@@ -194,11 +197,6 @@ Buat Pihak
                                                 <label for="">Tinggi</label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="my-auto">
-                                        <button class="btn btn-secondary align-middle">Tentukan via kuisioner</button>
                                     </div>
                                 </div>
                             </div>
@@ -238,6 +236,7 @@ Buat Pihak
             sectors: JSON.parse(`@json($data["sectors"])`),
 
             player_name: "",
+            alt_name: "",
             player_info: "",
             selected_sector: "",
             selected_level: "",
@@ -356,6 +355,7 @@ Buat Pihak
                 try {
                     let response = await axios.post("{{route('project_player.create_action', $id)}}", {
                         "_token": "{{csrf_token()}}",
+                        alt_name: this.alt_name,
                         name: this.player_name,
                         details: this.player_info,
                         sector: this.selected_sector,

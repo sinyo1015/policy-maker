@@ -26,7 +26,7 @@ use App\Http\Controllers\Project\SuggestedStrategyController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name("homepage");
 
 
 Route::group(['prefix' => "projects"], function(){

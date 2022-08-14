@@ -22,7 +22,7 @@ class PolicyInterest extends Model
         return $this->hasOne(Player::class, "id", "player_id");
     }
 
-    public function interest()
+    public function interest_sub()
     {
         return $this->hasOne(Interest::class, "id", "interest_id");
     }
